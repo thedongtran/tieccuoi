@@ -1,0 +1,21 @@
+version: '3.1'
+
+networks:
+  mysql-network:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    networks:
+      - mysql-network
+    environment:
+      MYSQL_DATABASE: 'tieccuoi'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volumes/tieccuoi-mysql:/var/lib/mysql
